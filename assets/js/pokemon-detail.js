@@ -3,9 +3,6 @@ const pokemonDetail = document.getElementById("pokemonDetail");
 const pokemonContent = document.getElementById("pokemonContent");
 const pokeBody = document.getElementsByTagName("body")[0];
 
-// fazer novo fecth?
-// como pegar o id do pokemon?
-// utilizar o objeto já cosntruido?
 
 document.addEventListener("DOMContentLoaded", () => {
   const pokemonId = new URLSearchParams(window.location.search).get("pokemon");
