@@ -127,7 +127,7 @@
 }
 
 .details img {
-  max-width: 80%;
+  max-width: 90px;
   height: 90px;
   align-self: flex-end;
 }

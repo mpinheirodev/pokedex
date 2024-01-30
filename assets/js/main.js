@@ -8,15 +8,17 @@ function loadMoreItems(offset, limit) {
   pokeApi.getPokemons(offset, limit).then((pokemons) => {
     const newHtml = pokemons
       .map(
-        (pokemon) =>
-          `<li class="pokemon ${pokemon.type}">
+        (pokemon) => `
+      <a href="./poke-detail.html?pokemon=${
+        pokemon.number
+      }"><li class="pokemon ${pokemon.type}">
           <span class="number">#${pokemon.number}</span>
           <span class="name">${pokemon.name}</span>
 
           <div class="details">
             <ol class="types">
               ${pokemon.types
-                .map((type) => `<a href="./poke-detail.html?pokemon=${pokemon.number}"><li class="type ${type}">${type}</li></a>`)
+                .map((type) => `<li class="type ${type}">${type}</li>`)
                 .join("")}
             </ol>
 
@@ -25,8 +27,9 @@ function loadMoreItems(offset, limit) {
               alt="${pokemon.name}"
             />
           </div>
-        </li>`
-      ).join("")
+        </li></a>`
+      )
+      .join("");
     pokemonList.innerHTML += newHtml;
   });
 }
@@ -42,7 +45,7 @@ loadMoreBtn.addEventListener("click", () => {
     loadMoreItems(offset, newLimit);
 
     loadMoreBtn.parentElement.removeChild(loadMoreBtn);
-  }else {
+  } else {
     loadMoreItems(offset, limit);
   }
 });
